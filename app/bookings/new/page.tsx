@@ -41,6 +41,8 @@ interface Hostel {
     name: string
     shortCode: string
   }
+  caretakerPhone?: string
+  rules?: string[]
 }
 
 interface RoomType {
@@ -59,6 +61,13 @@ interface RoomType {
     order: number
   }>
 }
+
+// Simplified booking for Ugandan students
+const BOOKING_STEPS = [
+  { id: 1, title: "Select Room", description: "Choose your preferred room type" },
+  { id: 2, title: "Contact Details", description: "Add your contact information" },
+  { id: 3, title: "Submit Request", description: "Send booking request to hostel" },
+]
 
 export default function NewBookingPage() {
   const { data: session, status } = useSession()

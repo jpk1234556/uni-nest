@@ -111,21 +111,28 @@ export default function HomePage() {
             <div className="max-w-2xl mx-auto">
               <div className="bg-white rounded-lg shadow-lg p-2 flex">
                 <div className="flex-1 flex">
-                  <div className="flex-1 relative">
+                  <div className="relative flex-1">
                     <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                     <input
                       type="text"
-                      placeholder="Search by university or location..."
+                      placeholder="Search hostels near your university..."
                       className="w-full pl-10 pr-4 py-3 text-gray-900 focus:outline-none"
                     />
                   </div>
-                  <button
-                    onClick={() => router.push("/search")}
-                    className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700"
-                  >
-                    Search Hostels
-                  </button>
+                  <select className="px-4 py-3 text-gray-700 border-l focus:outline-none">
+                    <option>All Universities</option>
+                    <option>Makerere University (MUK)</option>
+                    <option>Kyambogo University (KYU)</option>
+                    <option>MUBS</option>
+                    <option>KIU</option>
+                  </select>
                 </div>
+                <button
+                  onClick={() => router.push("/search")}
+                  className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700"
+                >
+                  Search Hostels
+                </button>
               </div>
             </div>
           </div>

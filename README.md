@@ -1,234 +1,244 @@
 # Uni-Nest 🏠
 
-A comprehensive hostel discovery and allocation platform for Ugandan universities.
+**Uganda's Premier Student Hostel Booking Platform**
 
-## 🎯 The Vision
-
-Uni-Nest connects students with safe, affordable, and verified hostels near their universities across Uganda. Think of it as the **Airbnb for student accommodation** in Uganda.
-
-## 🚀 Features
-
-### For Students 👩‍🎓
-- **Smart Search**: Find hostels by university, location, price, and amenities
-- **Detailed Listings**: View photos, room types, pricing, and facilities
-- **Verified Reviews**: Read authentic reviews from fellow students
-- **Online Booking**: Apply for rooms directly through the platform
-- **Map Integration**: See exact distances from your university
-
-### For Hostel Owners 🏠
-- **Easy Management**: Add/update hostels and room availability
-- **Booking Management**: Review and approve student applications
-- **Analytics**: Track occupancy rates and revenue
-- **Direct Communication**: Message with potential tenants
-
-### For Universities 🏫
-- **Verified Listings**: Approve and recommend official hostels
-- **Student Housing Data**: Monitor accommodation trends
-- **Allocation System**: Manage official hostel allocations
-
-## 🛠 Tech Stack
-
-### Frontend
-- **Next.js 14** - React framework with App Router
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first styling
-- **shadcn/ui** - Modern UI components
-- **Lucide React** - Beautiful icons
-
-### Backend (Planned)
-- **Node.js + Express** - RESTful API
-- **PostgreSQL** - Robust database
-- **Prisma ORM** - Type-safe database access
-- **JWT Authentication** - Secure user sessions
-
-### External Services
-- **Google Maps API** - Location services
-- **Cloudinary** - Image storage
-- **SendGrid** - Email notifications
-
-## 📊 Database Schema
-
-Our platform uses a comprehensive PostgreSQL database with the following core entities:
-
-- **Users** (Students, Hostel Owners, Admins)
-- **Universities** (Makerere, Kyambogo, MUBS, etc.)
-- **Hostels** (Property listings with amenities)
-- **Room Types** (Single, Double, Self-contained)
-- **Bookings** (Student applications and reservations)
-- **Reviews** (Student feedback and ratings)
-
-See [DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md) for complete schema details.
-
-## 🏗️ System Architecture
-
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │    Backend      │    │   Database      │
-│   (Next.js)     │◄──►│   (Node.js)     │◄──►│  (PostgreSQL)   │
-│                 │    │                 │    │                 │
-│ - React SPA     │    │ - REST API      │    │ - User Data     │
-│ - Tailwind CSS  │    │ - Auth (JWT)    │    │ - Hostels       │
-│ - Maps          │    │ - File Upload   │    │ - Bookings      │
-│ - Forms         │    │ - Email Service │    │ - Reviews       │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
-
-See [SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md) for complete architecture details.
-
-## 🎨 UI/UX Design
-
-Our design system focuses on:
-- **Mobile-first responsive design**
-- **Accessibility compliance (WCAG AA)**
-- **Modern, clean interface**
-- **Intuitive navigation**
-- **Fast loading times**
-
-See [UI_UX_DESIGN.md](./UI_UX_DESIGN.md) for complete design specifications.
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone <repository-url>
-cd uni-nest
-```
-
-2. **Install dependencies**
-```bash
-npm install
-```
-
-3. **Set up environment variables**
-```bash
-cp .env.example .env.local
-# Add your environment variables
-```
-
-4. **Run the development server**
-```bash
-npm run dev
-```
-
-5. **Open your browser**
-Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 📱 Pages & Routes
-
-### Public Pages
-- `/` - Landing page
-- `/hostels/search` - Search hostels
-- `/hostels/[id]` - Hostel details
-- `/universities` - Browse by university
-- `/about` - About page
-- `/contact` - Contact page
-
-### Authentication
-- `/login` - User login
-- `/register` - User registration
-- `/forgot-password` - Password reset
-
-### Dashboard Areas
-- `/dashboard/student` - Student dashboard
-- `/dashboard/owner` - Hostel owner dashboard
-- `/dashboard/admin` - Admin dashboard
-
-## 🎯 MVP Features (Phase 1)
-
-- ✅ University selector
-- ✅ Hostel listings with search/filter
-- ✅ Hostel detail pages
-- ✅ Student booking requests
-- ✅ Hostel owner dashboard
-- ✅ Basic authentication
-
-## 🗺️ Target Universities (Phase 1)
-
-Starting with Kampala metropolitan area:
-1. **Makerere University** (MUK)
-2. **Kyambogo University** (KYU) 
-3. **Makerere University Business School** (MUBS)
-4. **Kampala International University** (KIU)
-5. **Uganda Christian University** (UCU)
-
-## 💰 Business Model
-
-1. **Hostel Listing Fees** - Monthly subscription for hostel owners
-2. **Featured Listings** - Premium placement in search results
-3. **Booking Commission** - Small percentage on successful bookings
-4. **Advertisement** - Targeted ads for student services
-
-## 🔒 Security Features
-
-- **JWT Authentication** - Secure user sessions
-- **Role-Based Access Control** - Different permissions for users
-- **Input Validation** - Prevent XSS and SQL injection
-- **HTTPS Only** - Encrypted data transmission
-- **Data Privacy** - GDPR-compliant data handling
-
-## 📈 Scalability Considerations
-
-- **Database Indexing** - Optimized query performance
-- **CDN Integration** - Fast asset delivery
-- **Load Balancing** - Handle high traffic
-- **Caching Strategy** - Redis for session and data caching
-- **Microservices Ready** - Future-proof architecture
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🎯 Why Uni-Nest?
-
-### The Problem
-Every year, thousands of Ugandan students struggle to find:
-- Safe and affordable accommodation
-- Verified hostels near their universities
-- Transparent pricing and reviews
-- Easy booking processes
-
-### Our Solution
-Uni-Nest provides:
-- **Trust**: Verified hostels with authentic reviews
-- **Convenience**: One-stop platform for all housing needs
-- **Transparency**: Clear pricing and detailed information
-- **Accessibility**: Mobile-friendly, easy to use
-
-### Market Opportunity
-- **10,000+** students need accommodation annually
-- **500+** hostels across major universities
-- **Growing** student population in Uganda
-- **Untapped** digital accommodation market
-
-## 🚀 Next Steps
-
-1. **Complete MVP Development** (Current sprint)
-2. **Beta Testing** with Makerere University students
-3. **Launch** in Kampala metropolitan area
-4. **Expand** to other Ugandan universities
-5. **Mobile App** development
-6. **AI Recommendations** engine
-
-## 📞 Contact
-
-- **Email**: info@uni-nest.ug
-- **Phone**: +256 123 456 789
-- **Address**: Kampala, Uganda
+> *Connecting Ugandan students with safe, affordable, and verified hostels near their universities*
 
 ---
 
-**Made with ❤️ for Ugandan students**
+## 🎯 **Our Vision**
+
+Uni-Nest is the **Airbnb for Ugandan student accommodation** - a dedicated platform that solves the housing challenges faced by thousands of university students across Uganda.
+
+---
+
+## 🌍 **Focus: Kampala Metropolitan Area (Phase 1)**
+
+We're starting with Uganda's education hub:
+
+### 🏛️ **Target Universities:**
+- **Makerere University (MUK)** - Uganda's premier university
+- **Kyambogo University (KYU)** - Leading in technology & education  
+- **MUBS** - Uganda's top business school
+- **KIU** - International standard education
+
+---
+
+## 🚀 **Core Features**
+
+### 👩‍🎓 **For Students:**
+- 🔍 **Smart Search** - Filter by university, price, distance, amenities
+- 🗺️ **Map View** - See exact distances from campus
+- 📱 **Mobile-First** - Optimized for Ugandan students' phones
+- 💰 **Transparent Pricing** - Clear UGX pricing, no hidden fees
+- ⭐ **Verified Reviews** - Real feedback from fellow students
+- 📝 **Simple Booking** - 3-step booking process
+
+### 🏠 **For Hostel Owners:**
+- 📋 **Easy Listing** - Add hostels in minutes
+- 📊 **Management Dashboard** - Track bookings & revenue
+- 💸 **Multiple Revenue Streams** - Listing fees + featured placements
+- 📱 **Mobile Management** - Manage on-the-go
+
+### 🏫 **For Universities:**
+- ✅ **Verified Hostels** - Approved accommodation partners
+- 📈 **Housing Analytics** - Monitor student accommodation trends
+- 🔗 **Direct Integration** - Seamless student experience
+
+---
+
+## 💰 **Ugandan Market Pricing**
+
+### **Realistic Room Pricing (UGX/month):**
+- **Budget Rooms:** 120K - 180K (shared facilities)
+- **Standard Rooms:** 200K - 300K (some private facilities)
+- **Premium Rooms:** 350K+ (self-contained, extra amenities)
+
+### **Key Amenities Ugandan Students Want:**
+- ✅ **WiFi** - Essential for studies
+- ✅ **Security** - 24/7 protection
+- ✅ **Water Supply** - Reliable water access
+- ✅ **Power Backup** - Handle load shedding
+- ✅ **Study Areas** - Quiet spaces for learning
+
+---
+
+## 🛠 **Technology Stack**
+
+### **Frontend:**
+- **Next.js 14** - Modern React framework
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Mobile-first styling
+- **Google Maps API** - Location services
+
+### **Backend:**
+- **Next.js API Routes** - Serverless backend
+- **Prisma ORM** - Type-safe database access
+- **PostgreSQL** - Robust database
+- **NextAuth.js** - Secure authentication
+
+### **Infrastructure:**
+- **Vercel** - Frontend hosting
+- **Vercel Postgres** - Database hosting
+- **Cloudinary** - Image storage
+
+---
+
+## 📱 **Mobile-First Design**
+
+Optimized for how Ugandan students actually use their phones:
+- 📱 **Touch-friendly** interfaces
+- ⚡ **Fast loading** on 3G/4G
+- 🎨 **Clean, simple** UI
+- 💾 **Low data usage**
+
+---
+
+## 🚀 **Getting Started**
+
+### **Prerequisites:**
+- Node.js 18+
+- PostgreSQL database
+- Google Maps API key
+
+### **Installation:**
+
+```bash
+# Clone the repository
+git clone https://github.com/jpk1234556/uni-nest.git
+cd uni-nest
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.local.example .env.local
+# Edit .env.local with your credentials
+
+# Generate Prisma client
+npx prisma generate
+
+# Set up database
+npx prisma db push
+npx prisma db seed
+
+# Start development server
+npm run dev
+```
+
+### **Environment Variables:**
+```env
+DATABASE_URL="postgresql://..."
+NEXTAUTH_SECRET="your-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="your-maps-key"
+```
+
+---
+
+## 🎯 **Business Model**
+
+### **Revenue Streams:**
+1. **🏠 Hostel Listing Fees** - Monthly subscription (UGX 50K-200K)
+2. **⭐ Featured Listings** - Priority placement (UGX 100K/month)
+3. **💰 Booking Commission** - 5-10% per successful booking
+4. **📱 Student Services Ads** - WiFi, moving, furniture services
+
+---
+
+## 📊 **Market Opportunity**
+
+### **The Problem:**
+- **10,000+** students need housing annually in Kampala
+- **500+** hostels across major universities
+- **No centralized platform** for discovery
+- **Trust issues** with current offline booking
+- **Information asymmetry** - students don't know options
+
+### **Our Solution:**
+- **Trust:** Verified hostels with authentic reviews
+- **Convenience:** One-stop platform for housing needs
+- **Transparency:** Clear pricing and detailed information
+- **Accessibility:** Mobile-friendly for Ugandan students
+
+---
+
+## 🗺️ **Development Roadmap**
+
+### **✅ Phase 1 - MVP (Current)**
+- [x] University selector (MUK, KYU, MUBS, KIU)
+- [x] Hostel listings with search/filters
+- [x] Hostel detail pages
+- [x] Student booking requests
+- [x] Hostel owner dashboard
+- [x] Mobile-responsive design
+
+### **🔄 Phase 2 - Enhancement**
+- [ ] Real-time availability
+- [ ] Online payments (Mobile Money integration)
+- [ ] Review and rating system
+- [ ] Advanced analytics dashboard
+
+### **🚀 Phase 3 - Scale**
+- [ ] Mobile apps (iOS/Android)
+- [ ] Expand to other Ugandan universities
+- [ ] AI hostel recommendations
+- [ ] University partnership program
+
+---
+
+## 🔐 **Admin Access**
+
+**Login Credentials:**
+- **Email:** `admin@uni-nest.ug`
+- **Password:** `admin123`
+
+---
+
+## 🤝 **Contributing**
+
+We welcome contributions! Here's how to get started:
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+---
+
+## 📄 **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📞 **Contact**
+
+- **📧 Email:** info@uni-nest.ug
+- **📱 Phone:** +256 123 456 789
+- **📍 Address:** Kampala, Uganda
+
+---
+
+## 🎉 **Why Uni-Nest?**
+
+### **For Ugandan Students:**
+✅ **Find housing faster** - No more walking around campus looking for hostels  
+✅ **Compare options easily** - See all choices in one place  
+✅ **Trust the platform** - Verified hostels with real reviews  
+✅ **Save money** - Compare prices and find best deals  
+
+### **For Hostel Owners:**
+✅ **More bookings** - Reach thousands of students online  
+✅ **Easy management** - Digital booking system  
+✅ **Better visibility** - Featured listings and marketing  
+✅ **Steady income** - Predictable occupancy rates  
+
+---
+
+**🚀 Ready to transform Uganda's student accommodation market!**
+
+---
+
+*Made with ❤️ for Ugandan students, by people who understand the local context.*

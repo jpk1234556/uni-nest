@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
-import { Search, Filter, MapPin, Star, Wifi, Droplet, Zap, Users, Bed, DollarSign, X, Building } from "lucide-react"
+import { Search, Filter, MapPin, Star, Wifi, Droplet, Zap, Users, Bed, DollarSign, X, Building, Shield } from "lucide-react"
 import Link from "next/link"
 
 interface Hostel {
@@ -47,6 +47,36 @@ interface University {
     hostels: number
   }
 }
+
+// Uganda-specific amenities and filters
+const UGANDA_AMENITIES = [
+  { id: 'wifi', label: 'WiFi', icon: Wifi },
+  { id: 'water', label: 'Water', icon: Droplet },
+  { id: 'power', label: 'Power Backup', icon: Zap },
+  { id: 'security', label: 'Security', icon: Shield },
+]
+
+const KAMPALA_UNIVERSITIES = [
+  { id: 'all', name: 'All Universities' },
+  { id: 'makerere', name: 'Makerere University (MUK)' },
+  { id: 'kyambogo', name: 'Kyambogo University (KYU)' },
+  { id: 'mubs', name: 'MUBS' },
+  { id: 'kiu', name: 'KIU' },
+]
+
+const ROOM_TYPES = [
+  { id: 'all', name: 'All Room Types' },
+  { id: 'single', name: 'Single Room' },
+  { id: 'double', name: 'Double Room' },
+  { id: 'self-contained', name: 'Self-contained' },
+]
+
+const PRICE_RANGES = [
+  { id: 'all', name: 'Any Price', min: 0, max: 1000000 },
+  { id: 'budget', name: 'Budget (Under 150K)', min: 0, max: 150000 },
+  { id: 'mid', name: 'Mid-range (150K-300K)', min: 150000, max: 300000 },
+  { id: 'premium', name: 'Premium (300K+)', min: 300000, max: 1000000 },
+]
 
 export default function SearchPage() {
   const searchParams = useSearchParams()
