@@ -188,7 +188,7 @@ export default function SearchPage() {
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center text-blue-600 hover:text-blue-700">
+            <Link href="/" className="flex items-center text-orange-500 hover:text-orange-600 transition-colors">
               ← Back to Home
             </Link>
             <h1 className="text-2xl font-bold text-gray-900">Search Hostels</h1>
@@ -226,7 +226,7 @@ export default function SearchPage() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Hostel name, location..."
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                       />
                     </div>
                   </div>
@@ -239,7 +239,7 @@ export default function SearchPage() {
                     <select
                       value={selectedUniversity}
                       onChange={(e) => setSelectedUniversity(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     >
                       <option value="">All Universities</option>
                       {universities.map((uni) => (
@@ -261,14 +261,14 @@ export default function SearchPage() {
                         value={minPrice}
                         onChange={(e) => setMinPrice(e.target.value)}
                         placeholder="Min"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                       />
                       <input
                         type="number"
                         value={maxPrice}
                         onChange={(e) => setMaxPrice(e.target.value)}
                         placeholder="Max"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                       />
                     </div>
                   </div>
@@ -281,7 +281,7 @@ export default function SearchPage() {
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     >
                       <option value="newest">Newest First</option>
                       <option value="price-low">Price: Low to High</option>
@@ -293,7 +293,7 @@ export default function SearchPage() {
                   <div className="flex gap-2">
                     <button
                       type="submit"
-                      className="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
+                      className="flex-1 bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 transition-colors font-semibold"
                     >
                       Apply Filters
                     </button>
@@ -393,7 +393,7 @@ export default function SearchPage() {
                         </div>
 
                         {hostel.university && (
-                          <div className="text-sm text-blue-600 mb-2">
+                          <div className="text-sm text-orange-600 mb-2">
                             {hostel.university.name}
                           </div>
                         )}
@@ -407,7 +407,7 @@ export default function SearchPage() {
 
                         <div className="flex items-center justify-between mb-3">
                           <div>
-                            <span className="text-2xl font-bold text-blue-600">
+                            <span className="text-2xl font-bold text-orange-600">
                               UGX {getLowestPrice(hostel).toLocaleString()}
                             </span>
                             <span className="text-sm text-gray-600">/month</span>
@@ -430,7 +430,7 @@ export default function SearchPage() {
 
                         <Link
                           href={`/hostels/${hostel.id}`}
-                          className="block w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 text-center"
+                          className="block w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 text-center transition-colors font-semibold"
                         >
                           View Details
                         </Link>

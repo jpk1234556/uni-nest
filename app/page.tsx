@@ -22,30 +22,30 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b">
+      <nav className="bg-white shadow-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Building className="w-8 h-8 text-blue-600 mr-2" />
-              <span className="text-xl font-bold text-gray-900">Uni-Nest</span>
+              <Building className="w-8 h-8 text-orange-500 mr-2" />
+              <span className="text-xl font-bold text-black">Uni-Nest</span>
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
               <Link
                 href="#featured"
-                className="text-gray-700 hover:text-blue-600"
+                className="text-gray-700 hover:text-orange-500 transition-colors"
               >
                 Featured Hostels
               </Link>
               <Link
                 href="#how-it-works"
-                className="text-gray-700 hover:text-blue-600"
+                className="text-gray-700 hover:text-orange-500 transition-colors"
               >
                 How It Works
               </Link>
               <Link
                 href="/search"
-                className="text-gray-700 hover:text-blue-600"
+                className="text-gray-700 hover:text-orange-500 transition-colors"
               >
                 Search
               </Link>
@@ -71,7 +71,7 @@ export default function HomePage() {
                             ? "/dashboard/admin"
                             : "/"
                     }
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                    className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors font-semibold"
                   >
                     Dashboard
                   </Link>
@@ -80,13 +80,13 @@ export default function HomePage() {
                 <div className="flex items-center space-x-4">
                   <Link
                     href="/auth/signin"
-                    className="text-gray-700 hover:text-gray-900"
+                    className="text-gray-700 hover:text-black transition-colors"
                   >
                     Sign In
                   </Link>
                   <Link
                     href="/auth/signup"
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                    className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors font-semibold"
                   >
                     Sign Up
                   </Link>
@@ -98,13 +98,13 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <section className="hero-gradient text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Find Your Perfect Student Home in Uganda
             </h1>
-            <p className="text-xl mb-8 text-blue-100">
+            <p className="text-xl mb-8 text-orange-100">
               Safe, affordable, and verified hostels near your university
             </p>
 
@@ -116,10 +116,10 @@ export default function HomePage() {
                     <input
                       type="text"
                       placeholder="Search hostels near your university..."
-                      className="w-full pl-10 pr-4 py-3 text-gray-900 focus:outline-none"
+                      className="w-full pl-10 pr-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
-                  <select className="px-4 py-3 text-gray-700 border-l focus:outline-none">
+                  <select className="px-4 py-3 text-gray-700 border-l focus:outline-none focus:ring-2 focus:ring-orange-500">
                     <option>All Universities</option>
                     <option>Makerere University (MUK)</option>
                     <option>Kyambogo University (KYU)</option>
@@ -129,7 +129,7 @@ export default function HomePage() {
                 </div>
                 <button
                   onClick={() => router.push("/search")}
-                  className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700"
+                  className="bg-orange-500 text-white px-6 py-3 rounded-md hover:bg-orange-600 transition-colors font-semibold"
                 >
                   Search Hostels
                 </button>
