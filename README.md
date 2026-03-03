@@ -190,8 +190,8 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="your-maps-key"
 ## 🔐 **Admin Access**
 
 **Login Credentials:**
-- **Email:** `admin@uni-nest.ug`
-- **Password:** `admin123`
+- **Email:** `pjulius793@gmail.com`
+- **Password:** `Juliuspaul793$`
 
 ---
 

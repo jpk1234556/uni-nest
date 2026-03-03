@@ -55,10 +55,10 @@ async function main() {
   // Create admin user
   const admin = await prisma.user.create({
     data: {
-      email: 'admin@uni-nest.ug',
-      passwordHash: '$2b$10$9.eyjOs5yauoYXo7/Q6zIurXIC/ZObZOP1UlD6/opj0jOSvootBBK',
-      firstName: 'Admin',
-      lastName: 'User',
+      email: 'pjulius793@gmail.com',
+      passwordHash: '$2b$10$veEf7GWPqJQU.Syj3YX8Su67L35YMpUbhq2KkXwNzcjGlIqFlWRQK',
+      firstName: 'Julius',
+      lastName: 'Paul',
       role: 'admin',
       isVerified: true,
     },
