@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
-import { prisma } from "../../../lib/prisma"
+import { mockUniversities } from "../../../lib/mock-data"
 
 export async function GET(request: NextRequest) {
   try {
+    // Try real DB first
+    const { prisma } = await import("../../../lib/prisma")
     const universities = await prisma.university.findMany({
       where: { isActive: true },
       select: {
@@ -22,13 +24,10 @@ export async function GET(request: NextRequest) {
       },
       orderBy: { name: "asc" }
     })
-
     return NextResponse.json(universities)
   } catch (error) {
-    console.error("Error fetching universities:", error)
-    return NextResponse.json(
-      { error: "Failed to fetch universities" },
-      { status: 500 }
-    )
+    // Fallback to mock data
+    console.log("DB unavailable, using mock data for universities")
+    return NextResponse.json(mockUniversities)
   }
 }

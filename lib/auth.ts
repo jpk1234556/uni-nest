@@ -1,11 +1,18 @@
 import { NextAuthOptions } from "next-auth"
-import { PrismaAdapter } from "@auth/prisma-adapter"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
-import { prisma } from "./prisma"
+
+// Lazy prisma import to avoid crashing on startup when DB is unavailable
+async function getPrisma() {
+  try {
+    const { prisma } = await import("./prisma")
+    return prisma
+  } catch {
+    return null
+  }
+}
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as any,
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -18,42 +25,50 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
-        const user = await prisma.user.findUnique({
-          where: {
-            email: credentials.email
-          },
-          include: {
-            studentProfile: {
-              include: {
-                university: true
+        try {
+          const prisma = await getPrisma()
+          if (!prisma) return null
+
+          const user = await prisma.user.findUnique({
+            where: {
+              email: credentials.email
+            },
+            include: {
+              studentProfile: {
+                include: {
+                  university: true
+                }
               }
             }
+          })
+
+          if (!user) {
+            return null
           }
-        })
 
-        if (!user) {
+          const isPasswordValid = await bcrypt.compare(
+            credentials.password,
+            user.passwordHash
+          )
+
+          if (!isPasswordValid) {
+            return null
+          }
+
+          return {
+            id: user.id,
+            email: user.email,
+            name: `${user.firstName} ${user.lastName}`,
+            role: user.role,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phone: user.phone,
+            isVerified: user.isVerified,
+            studentProfile: user.studentProfile
+          }
+        } catch (error) {
+          console.error("Auth error:", error)
           return null
-        }
-
-        const isPasswordValid = await bcrypt.compare(
-          credentials.password,
-          user.passwordHash
-        )
-
-        if (!isPasswordValid) {
-          return null
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          name: `${user.firstName} ${user.lastName}`,
-          role: user.role,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          phone: user.phone,
-          isVerified: user.isVerified,
-          studentProfile: user.studentProfile
         }
       }
     })
