@@ -1,10 +1,11 @@
 "use client"
 
-import { useSession } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { Building, LogOut, Settings, Search } from "lucide-react"
 import Link from "next/link"
+import { getDashboardPathForRole } from "../../lib/routes"
 
 export default function DashboardLayout({
   children,
@@ -34,18 +35,7 @@ export default function DashboardLayout({
     return null
   }
 
-  const getDashboardLink = () => {
-    switch (session.user.role) {
-      case "student":
-        return "/dashboard/student"
-      case "hostel_owner":
-        return "/dashboard/owner"
-      case "admin":
-        return "/dashboard/admin"
-      default:
-        return "/"
-    }
-  }
+  const getDashboardLink = () => getDashboardPathForRole(session.user.role)
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -67,7 +57,10 @@ export default function DashboardLayout({
                 <Settings className="w-5 h-5" />
                 Settings
               </button>
-              <button className="flex items-center gap-2 text-red-600 hover:text-red-700">
+              <button
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="flex items-center gap-2 text-red-600 hover:text-red-700"
+              >
                 <LogOut className="w-5 h-5" />
                 Logout
               </button>

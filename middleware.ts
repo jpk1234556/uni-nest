@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getToken } from 'next-auth/jwt'
 import { ErrorHandler, createError, ErrorType, ErrorBoundaryUtils } from './lib/error-handling'
 
 // Rate limiting storage (in production, use Redis or database)
@@ -198,6 +199,47 @@ export async function middleware(request: NextRequest) {
       return handleCORS(request, setSecurityHeaders(response))
     }
     
+    // Auth-based route protection
+    const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET })
+
+    // Protected routes that require authentication
+    const protectedRoutes = [
+      '/dashboard',
+      '/hostels/create',
+      '/hostels/edit',
+      '/hostels/dashboard',
+      '/bookings',
+      '/profile',
+      '/admin',
+    ]
+
+    // Admin-only routes
+    const adminRoutes = ['/admin']
+
+    // Hostel owner-only routes
+    const ownerRoutes = ['/hostels/create', '/hostels/edit', '/hostels/dashboard']
+
+    const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route))
+    const isAdminRoute = adminRoutes.some(route => pathname.startsWith(route))
+    const isOwnerRoute = ownerRoutes.some(route => pathname.startsWith(route))
+
+    if (isProtectedRoute && !token) {
+      return NextResponse.redirect(new URL('/auth/signin', request.url))
+    }
+
+    if (isAdminRoute && token?.role !== 'admin') {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
+
+    if (isOwnerRoute && token?.role !== 'hostel_owner' && token?.role !== 'admin') {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
+
+    // Redirect authenticated users away from auth pages
+    if (token && pathname.startsWith('/auth/')) {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
+
     // Create response
     const response = NextResponse.next()
     
